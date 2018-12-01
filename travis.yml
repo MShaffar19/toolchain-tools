@@ -46,11 +46,14 @@ env:
 
 matrix:
   include:
-    - os: linux
+    - name: Linux
+      os: linux
       dist: precise
-    - os: osx
+    - name: OsX
+      os: osx
       osx_image: xcode8.3
-    - os: windows
+    - name: Windows
+      os: windows
   exclude:
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
