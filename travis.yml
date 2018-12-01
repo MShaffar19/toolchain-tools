@@ -25,6 +25,9 @@ language: cpp
 
 sudo: required
 
+git:
+  depth: false
+  
 services:
   - docker
 
