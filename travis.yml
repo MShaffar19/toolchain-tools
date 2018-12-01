@@ -28,6 +28,14 @@ sudo: required
 services:
   - docker
 
+os:
+  - linux
+  - osx
+  - windows
+
+dist: precise
+osx_image: xcode8.3
+
 env:
   - DOCKER_CONTEXT=bin/docker/linux-32
     DOCKER_CONTAINER=linux-32
@@ -45,43 +53,43 @@ env:
   - CONDA_RECIPE=bin/conda/llvm-suite
 
 matrix:
-  include:
-    - os: linux
-      dist: precise
-    - os: osx
-      osx_image: xcode8.3
-    - os: windows
-  # exclude:
+  # include:
   #   - os: linux
-  #     env: CONDA_RECIPE=bin/conda/llvm-suite
+  #     dist: precise
   #   - os: osx
-  #     env:
-  #       DOCKER_CONTEXT=bin/docker/linux-32
-  #       DOCKER_CONTAINER=linux-32
-  #   - os: osx
-  #     env:
-  #       DOCKER_CONTEXT=bin/docker/linux-64
-  #       DOCKER_CONTAINER=linux-64
-  #   - os: osx
-  #     env:
-  #       CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
-  #       TRAVIS_WAIT=50
-  #   - os: osx
-  #     env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
+  #     osx_image: xcode8.3
   #   - os: windows
-  #     env: CONDA_RECIPE=bin/conda/llvm-suite
-  #   - os: windows
-  #     env:
-  #       DOCKER_CONTEXT=bin/docker/linux-32
-  #       DOCKER_CONTAINER=linux-32
-  #   - os: windows
-  #     env:
-  #       DOCKER_CONTEXT=bin/docker/linux-64
-  #       DOCKER_CONTAINER=linux-64
-  # allow_failures:
-  #   - os: osx
-  #     env:
-  #       CONDA_RECIPE=bin/conda/llvm-suite
+  exclude:
+    - os: linux
+      env: CONDA_RECIPE=bin/conda/llvm-suite
+    - os: osx
+      env:
+        DOCKER_CONTEXT=bin/docker/linux-32
+        DOCKER_CONTAINER=linux-32
+    - os: osx
+      env:
+        DOCKER_CONTEXT=bin/docker/linux-64
+        DOCKER_CONTAINER=linux-64
+    - os: osx
+      env:
+        CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+        TRAVIS_WAIT=50
+    - os: osx
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
+    - os: windows
+      env: CONDA_RECIPE=bin/conda/llvm-suite
+    - os: windows
+      env:
+        DOCKER_CONTEXT=bin/docker/linux-32
+        DOCKER_CONTAINER=linux-32
+    - os: windows
+      env:
+        DOCKER_CONTEXT=bin/docker/linux-64
+        DOCKER_CONTAINER=linux-64
+  allow_failures:
+    - os: osx
+      env:
+        CONDA_RECIPE=bin/conda/llvm-suite
 
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
