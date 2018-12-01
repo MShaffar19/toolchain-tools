@@ -33,14 +33,10 @@ source:
   # url: https://sourceforge.net/projects/scons/files/scons/2.5.1/scons-2.5.1.tar.gz
 
 build:
-  number: 0
-  features:
-    - {{ environ.get('CONDA_FEATURE', 'stable') }}
-  track_features:
-    - {{ environ.get('CONDA_FEATURE', 'stable') }}
+  number: {{ GIT_DESCRIBE_NUMBER }}
 
 requirements:
-  build:
+  host:
     - python
   run:
     - python

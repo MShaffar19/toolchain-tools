@@ -23,16 +23,14 @@
 
 package:
   name: libtoolchain
-  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.9.0') }}
+  version: {{ GIT_DESCRIBE_TAG }}
     
 build:
-  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  number: {{ GIT_DESCRIBE_NUMBER }}
   features:
     - vc14                 [win]
-    - {{ environ.get('CONDA_FEATURE', 'stable') }}
   track_features:
     - vc14                 [win]
-    - {{ environ.get('CONDA_FEATURE', 'stable') }}
   run_exports:
     - vs2015_runtime       [win]
 
@@ -51,7 +49,6 @@ requirements:
     - gcc_linux-{{ ARCH }}        [linux]
     - gxx_linux-{{ ARCH }}        [linux]
     - gfortran_linux-{{ ARCH }}   [linux]
-    # - glibc                      [linux]
     - clang_osx-{{ ARCH }}        [osx]
     - clangxx_osx-{{ ARCH }}      [osx]
     - gfortran_osx-{{ ARCH }}     [osx]

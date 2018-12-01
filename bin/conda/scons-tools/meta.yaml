@@ -23,19 +23,19 @@
 
 package:
   name: scons-tools
-  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.9.0') }}
+  version: {{ GIT_DESCRIBE_TAG }}
 
 source:
   path: .
 
 build:
-  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  number: {{ GIT_DESCRIBE_NUMBER }}
   features:
-    - vc12                [win]
-    - {{ environ.get('CONDA_FEATURE', 'stable') }}
+    - vc14                 [win]
   track_features:
-    - vc12                [win]
-    - {{ environ.get('CONDA_FEATURE', 'stable') }}
+    - vc14                 [win]
+  run_exports:
+    - vs2015_runtime       [win]
 
 requirements:
   build:

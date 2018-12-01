@@ -20,10 +20,6 @@
 ## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or       ##
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
-
-branches:
-  except:
-  - doc
   
 language: cpp
 
@@ -33,44 +29,20 @@ services:
   - docker
   
 env:
-  - CONDA_RECIPE=bin/conda/statiskit-stable
-  # - CONDA_RECIPE=bin/conda/statiskit-unstable
-  # - DOCKER_CONTEXT=bin/docker/linux-32
-  #   DOCKER_CONTAINER=linux-32
-  # - DOCKER_CONTEXT=bin/docker/linux-64
-  #   DOCKER_CONTAINER=linux-64
-  # - CONDA_RECIPE=bin/conda/python-scons
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  # - CONDA_RECIPE=bin/conda/python-parse
-  # - CONDA_RECIPE=bin/conda/llvm-suite
-  # - CONDA_RECIPE=bin/conda/libtoolchain
-  # - CONDA_RECIPE=bin/conda/python-toolchain
-  # - CONDA_RECIPE=bin/conda/boost-suite
-  #   TRAVIS_WAIT=30
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
-  #   TRAVIS_WAIT=50
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
-  # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
-  # - CONDA_RECIPE=bin/conda/libtoolchain-dev
-  # - CONDA_RECIPE=share/git/devops-tools/bin/conda/devops-tools
-  # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl-dev
-  # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl
-  # - CONDA_RECIPE=share/git/STL/bin/conda/python-statiskit_stl
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/libstatiskit_linalg-dev
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/libstatiskit_linalg
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/python-statiskit_linalg
-  # - CONDA_RECIPE=share/git/Core/bin/conda/libstatiskit_core-dev
-  # - CONDA_RECIPE=share/git/Core/bin/conda/libstatiskit_core
-  # - CONDA_RECIPE=share/git/Core/bin/conda/python-statiskit_core
-  # - CONDA_RECIPE=bin/conda/libstatiskit-dev
-  # - CONDA_RECIPE=bin/conda/libstatiskit
-  # - CONDA_RECIPE=bin/conda/python-statiskit
-  # - CONDA_RECIPE=bin/conda/statiskit
-  # - DOCKER_CONTEXT=bin/docker/statiskit
-  #   DOCKER_CONTAINER=statiskit
-  # - ANACONDA_RELEASE=true
+  - DOCKER_CONTEXT=bin/docker/linux-32
+    DOCKER_CONTAINER=linux-32
+  - DOCKER_CONTEXT=bin/docker/linux-64
+    DOCKER_CONTAINER=linux-64
+  - CONDA_RECIPE=bin/conda/python-scons
+  - CONDA_RECIPE=bin/conda/scons-tools
+  - CONDA_RECIPE=bin/conda/python-parse
+  - CONDA_RECIPE=bin/conda/llvm-suite
+  - CONDA_RECIPE=bin/conda/libtoolchain
+  - CONDA_RECIPE=bin/conda/libtoolchain-dev
+  - CONDA_RECIPE=bin/conda/python-toolchain
+  - CONDA_RECIPE=bin/conda/boost-suite
+  - CONDA_RECIPE=bin/conda/pybind11-suite
+  - CONDA_RECIPE=bin/conda/llvm-suite
 
 matrix:
   include:
@@ -80,6 +52,8 @@ matrix:
       osx_image: xcode8.3
     - os: windows
   exclude:
+    - os: linux
+      env: CONDA_RECIPE=bin/conda/llvm-suite
     - os: osx
       env:
         DOCKER_CONTEXT=bin/docker/linux-32
@@ -94,22 +68,20 @@ matrix:
         TRAVIS_WAIT=50
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
-    - os: linux
+    - os: windows
       env: CONDA_RECIPE=bin/conda/llvm-suite
-  allow_failures:
-    - os: linux
+    - os: windows
       env:
-        CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
-        TRAVIS_WAIT=50
-    - os: linux
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
+        DOCKER_CONTEXT=bin/docker/linux-32
+        DOCKER_CONTAINER=linux-32
+    - os: windows
+      env:
+        DOCKER_CONTEXT=bin/docker/linux-64
+        DOCKER_CONTAINER=linux-64
+  allow_failures:
     - os: osx
       env:
         CONDA_RECIPE=bin/conda/llvm-suite
-    - os: osx
-      env:
-        CONDA_RECIPE=bin/conda/boost-suite
-        TRAVIS_WAIT=30
 
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
