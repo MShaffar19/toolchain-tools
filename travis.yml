@@ -50,15 +50,8 @@ env:
   - CONDA_RECIPE=bin/conda/python-toolchain
   - CONDA_RECIPE=bin/conda/boost-suite
   - CONDA_RECIPE=bin/conda/pybind11-suite
-  - CONDA_RECIPE=bin/conda/llvm-suite
 
 matrix:
-  # include:
-  #   - os: linux
-  #     dist: precise
-  #   - os: osx
-  #     osx_image: xcode8.3
-  #   - os: windows
   exclude:
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
