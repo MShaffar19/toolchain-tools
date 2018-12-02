@@ -23,6 +23,6 @@
 
 set -ve
 
-${PYTHON} setup.py install --prefix=${PREFIX} --always-unzip
+${PYTHON} setup.py install --prefix=${PREFIX}
 
 set +ve
