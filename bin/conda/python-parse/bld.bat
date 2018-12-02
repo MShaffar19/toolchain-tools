@@ -23,7 +23,7 @@
 
 echo ON
 
-python setup.py install --prefix=%PREFIX%
+%PYTHON% setup.py install --prefix=%PREFIX% --always-unzip
 if errorlevel 1 exit 1
 
 echo OFF

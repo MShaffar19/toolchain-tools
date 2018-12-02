@@ -41,6 +41,7 @@ import subprocess
 import os
 import platform
 from string import digits as string_digits
+import six
 
 import SCons.Warnings
 
@@ -245,7 +246,11 @@ def find_vc_pdir_vswhere(msvc_version):
     if os.path.exists(vswhere_path):
         sp = subprocess.Popen(vswhere_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         vsdir, err = sp.communicate()
-        vc_pdir = os.path.join(vsdir.rstrip(), 'VC')
+        if six.PY3:
+            vsdir = vsdir.strip().decode()
+        else:
+            vsdir = vsdir.strip()
+        vc_pdir = os.path.join(vsdir, 'VC')
         return vc_pdir
     else:
         # No vswhere on system, no install info available
