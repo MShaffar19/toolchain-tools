@@ -40,7 +40,8 @@ requirements:
     - python
   run:
     - python
-
+    - six
+    
 about:
   home: http://www.scons.org/
   license: MIT
