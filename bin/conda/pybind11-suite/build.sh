@@ -5,13 +5,9 @@ ${PYTHON} ${RECIPE_DIR}/filter.py --src=${PREFIX} --dst=filtered.pkl
 mkdir build
 cd build
 
-env
-
-echo ${CXX}
-echo ${GXX}
 
 cmake \
-  -DCMAKE_CXX_COMPILER=${GXX} \
+  -DCMAKE_CXX_COMPILER=${CXX} \
   -DCMAKE_INSTALL_PREFIX=${PREFIX} \
   -DUSE_PYTHON_INCLUDE_DIR=ON \
   -DPYTHON_EXECUTABLE=${PREFIX}/bin/python \
