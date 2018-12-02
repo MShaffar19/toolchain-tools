@@ -13,6 +13,7 @@ build:
 requirements:
   build:
     - libtoolchain
+    - {{ compiler('c') }}
   host:
     - python
     - icu               [unix]
@@ -29,6 +30,7 @@ about:
 test:
   requires:
     - libtoolchain
+    - {{ compiler('c') }}
     - python
 
 outputs:

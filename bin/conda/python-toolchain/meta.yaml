@@ -36,8 +36,9 @@ about:
   summary: Collection of utilities for building Python packages.
 
 requirements:
-  build:
+  host:
     - python
+    - setuptools
     - pip
   run:
     - python

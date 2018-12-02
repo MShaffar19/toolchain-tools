@@ -12,6 +12,7 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     - libtoolchain
     - cmake
   host:

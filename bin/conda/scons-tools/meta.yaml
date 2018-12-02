@@ -38,7 +38,7 @@ build:
     - vs2015_runtime       [win]
 
 requirements:
-  build:
+  host:
     - python
   run:
     - python
@@ -54,12 +54,7 @@ about:
 
 test:
   requires:
-    - gcc_linux-{{ ARCH }}          [linux]
-    - gxx_linux-{{ ARCH }}          [linux]
-    - gfortran_linux-{{ ARCH }}     [linux]
-    - clang_osx-{{ ARCH }}            [osx]
-    - clangxx_osx-{{ ARCH }}          [osx]
-    - gfortran_osx-{{ ARCH }}         [osx]
+    - {{ compiler('c')}}
   files:
     - SConstruct
   commands:

@@ -35,10 +35,13 @@ about:
   
 requirements:
   build:
+    - {{ compiler('c') }}
+  host:
     - python
   run:
     - python
     - libtoolchain
+    - {{ compiler('c') }}
     # - python-autowig                                 [not win]
     # - python-clanglite                               [not win]
     # - python-clang                                   [not win]

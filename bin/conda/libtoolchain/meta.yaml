@@ -41,16 +41,15 @@ about:
   
 requirements:
   build:
+    - {{ compiler('c') }}
+    - pywin32                     [win]
+    - vs2015_runtime              [win]    
+  host:
     - python
   run:
+    - {{ compiler('c') }}
     - python
     - python-scons
     - scons-tools
-    - gcc_linux-{{ ARCH }}        [linux]
-    - gxx_linux-{{ ARCH }}        [linux]
-    - gfortran_linux-{{ ARCH }}   [linux]
-    - clang_osx-{{ ARCH }}        [osx]
-    - clangxx_osx-{{ ARCH }}      [osx]
-    - gfortran_osx-{{ ARCH }}     [osx]
     - pywin32                     [win]
     - vs2015_runtime              [win]
