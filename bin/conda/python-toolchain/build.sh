@@ -23,7 +23,7 @@
 
 set -ve
 
-pip install 3to2
+# pip install 3to2
 pip install ipdb
 # pip install ipdbplugin
 # pip install sphinxcontrib-blockdiag

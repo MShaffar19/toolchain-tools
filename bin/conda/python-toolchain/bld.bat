@@ -23,7 +23,7 @@
 
 echo ON
 
-pip install 3to2
+rem pip install 3to2
 pip install ipdb
 rem pip install ipdbplugin
 rem pip install sphinxcontrib-blockdiag
