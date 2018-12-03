@@ -4,7 +4,9 @@ echo ON
 if errorlevel 1 exit 1
 
 mkdir build
+if errorlevel 1 exit 1
 cd build
+if errorlevel 1 exit 1
 
 cmake -G "NMake Makefiles" ^
       -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
