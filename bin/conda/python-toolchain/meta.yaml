@@ -50,7 +50,6 @@ requirements:
     - nose
     - coverage
     - sphinx
-    - cmake
     - pillow
     - libtoolchain
 
