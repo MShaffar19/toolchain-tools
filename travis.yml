@@ -86,6 +86,9 @@ matrix:
     - os: osx
       env:
         CONDA_RECIPE=bin/conda/llvm-suite
+    - os: windows
+      env:
+        CONDA_RECIPE=bin/conda/boost-suite
 
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1

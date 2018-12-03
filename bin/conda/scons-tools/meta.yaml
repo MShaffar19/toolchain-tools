@@ -54,7 +54,7 @@ about:
 
 test:
   requires:
-    - {{ compiler('c')}}
+    - {{ compiler('cxx')}}
   files:
     - SConstruct
   commands:
