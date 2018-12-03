@@ -36,7 +36,7 @@ os:
   - osx
   - windows
 
-dist: precise
+dist: trusty
 osx_image: xcode8.3
 
 env:
