@@ -23,13 +23,13 @@
 
 echo ON
 
-if not exist %PREFIX%/etc/conda/activate.d mkdir %PREFIX%/etc/conda/activate.d
+if not exist %PREFIX%\etc\conda\activate.d mkdir %PREFIX%\etc\conda\activate.d
 if errorlevel 1 exit 1
-copy %RECIPE_DIR%/activate.bat %PREFIX%/etc/conda/activate.d/libtoolchain_vars.bat
+copy %RECIPE_DIR%\activate.bat %PREFIX%\etc\conda\activate.d\libtoolchain_vars.bat
 
-if not exist %PREFIX%/etc/conda/deactivate.d mkdir %PREFIX%/etc/conda/deactivate.d
+if not exist %PREFIX%\etc\conda\deactivate.d mkdir %PREFIX%\etc\conda\deactivate.d
 if errorlevel 1 exit 1
-copy %RECIPE_DIR%/deactivate.bat %PREFIX%/etc/conda/deactivate.d/libtoolchain_vars.bat
+copy %RECIPE_DIR%\deactivate.bat %PREFIX%\etc\conda\deactivate.d\libtoolchain_vars.bat
 
 
 echo OFF
