@@ -3,6 +3,9 @@ echo ON
 %PYTHON% %RECIPE_DIR%\\filter.py --src=%PREFIX%\\Library --dst=filtered.pkl
 if errorlevel 1 exit 1
 
+mkdir build
+cd build
+
 cmake -G "NMake Makefiles" ^
       -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
       -D USE_PYTHON_INCLUDE_DIR=ON ^
