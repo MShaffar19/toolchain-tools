@@ -8,11 +8,10 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-cmake -G "%CMAKE_GENERATOR%" ^
+cmake -G "NMake Makefiles" ^
       -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
       -D USE_PYTHON_INCLUDE_DIR=ON ^
       -D PYBIND11_TEST=OFF ^
-      --trace ^
       ..
 if errorlevel 1 exit 1
 
