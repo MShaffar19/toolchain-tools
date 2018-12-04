@@ -28,7 +28,7 @@ rem if errorlevel 1 exit 1
 
 rem set PYBIND11_USE_CMAKE=1
 rem cd ..
-%PYTHON% setup.py install --single-version-externally-managed --record record.txt
+%PYTHON% setup.py install --single-version-externally-managed --record record.txt --prefix=${PREFIX}\Library
 if errorlevel 1 exit 1
 
 %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
