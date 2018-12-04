@@ -12,8 +12,8 @@ cmake -G "%CMAKE_GENERATOR%" ^
       -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
       -D USE_PYTHON_INCLUDE_DIR=ON ^
       -D PYBIND11_TEST=OFF ^
+      --trace ^
       ..
-type CMakeFiles/CMakeOutput.log
 if errorlevel 1 exit 1
 
 nmake
