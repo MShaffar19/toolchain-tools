@@ -8,7 +8,7 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-cmake -G "Visual Studio 14 2015 Win64" ^
+cmake -G "%CMAKE_GENERATOR%" ^
       -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
       -D USE_PYTHON_INCLUDE_DIR=ON ^
       -D PYBIND11_TEST=OFF ^
