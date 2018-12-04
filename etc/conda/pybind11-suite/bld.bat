@@ -13,6 +13,7 @@ cmake -G "%CMAKE_GENERATOR%" ^
       -D USE_PYTHON_INCLUDE_DIR=ON ^
       -D PYBIND11_TEST=OFF ^
       ..
+type CMakeFiles/CMakeOutput.log
 if errorlevel 1 exit 1
 
 nmake
