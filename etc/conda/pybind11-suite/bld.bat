@@ -31,8 +31,7 @@ rem cd ..
 %PYTHON% setup.py install --single-version-externally-managed --record record.txt --prefix=${PREFIX}\Library
 if errorlevel 1 exit 1
 
-%PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
-%PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\lib --dst=%SRC_DIR%\\Library\\lib --filtered=filtered.pkl
-%PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\bin --dst=%SRC_DIR%\\Library\\bin --filtered=filtered.pkl
+%PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
+%PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Lib --dst=%SRC_DIR%\\Library\\Lib --filtered=filtered.pkl
 
 echo OFF
