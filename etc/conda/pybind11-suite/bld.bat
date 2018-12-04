@@ -8,7 +8,10 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-cmake -G "NMake Makefiles" ^
+set PATH="c:\Program Files (x86)\Windows Kits\10\bin\10.0.16299.0\x64\";%PATH%
+if errorlevel 1 exit 1
+
+cmake -G "%CMAKE_GENERATOR%" ^
       -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
       -D USE_PYTHON_INCLUDE_DIR=ON ^
       -D PYBIND11_TEST=OFF ^
