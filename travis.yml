@@ -40,55 +40,55 @@ dist: trusty
 osx_image: xcode8.3
 
 env:
-  - DOCKER_CONTEXT=bin/docker/linux-32
+  - DOCKER_CONTEXT=etc/docker/linux-32
     DOCKER_CONTAINER=linux-32
-  - DOCKER_CONTEXT=bin/docker/linux-64
+  - DOCKER_CONTEXT=etc/docker/linux-64
     DOCKER_CONTAINER=linux-64
-  - CONDA_RECIPE=bin/conda/python-scons
-  - CONDA_RECIPE=bin/conda/scons-tools
-  - CONDA_RECIPE=bin/conda/python-parse
-  - CONDA_RECIPE=bin/conda/llvm-suite
-  - CONDA_RECIPE=bin/conda/libtoolchain
-  - CONDA_RECIPE=bin/conda/libtoolchain-dev
-  - CONDA_RECIPE=bin/conda/python-toolchain
-  - CONDA_RECIPE=bin/conda/boost-suite
-  - CONDA_RECIPE=bin/conda/pybind11-suite
+  - CONDA_RECIPE=etc/conda/python-scons
+  - CONDA_RECIPE=etc/conda/scons-tools
+  - CONDA_RECIPE=etc/conda/python-parse
+  - CONDA_RECIPE=etc/conda/llvm-suite
+  - CONDA_RECIPE=etc/conda/libtoolchain
+  - CONDA_RECIPE=etc/conda/libtoolchain-dev
+  - CONDA_RECIPE=etc/conda/python-toolchain
+  - CONDA_RECIPE=etc/conda/boost-suite
+  - CONDA_RECIPE=etc/conda/pybind11-suite
 
 matrix:
   exclude:
     - os: linux
-      env: CONDA_RECIPE=bin/conda/llvm-suite
+      env: CONDA_RECIPE=etc/conda/llvm-suite
     - os: osx
       env:
-        DOCKER_CONTEXT=bin/docker/linux-32
+        DOCKER_CONTEXT=etc/docker/linux-32
         DOCKER_CONTAINER=linux-32
     - os: osx
       env:
-        DOCKER_CONTEXT=bin/docker/linux-64
+        DOCKER_CONTEXT=etc/docker/linux-64
         DOCKER_CONTAINER=linux-64
     - os: osx
       env:
-        CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+        CONDA_RECIPE=share/git/ClangLite/etc/conda/llvm
         TRAVIS_WAIT=50
     - os: osx
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
+      env: CONDA_RECIPE=share/git/ClangLite/etc/conda/clang
     - os: windows
-      env: CONDA_RECIPE=bin/conda/llvm-suite
+      env: CONDA_RECIPE=etc/conda/llvm-suite
     - os: windows
       env:
-        DOCKER_CONTEXT=bin/docker/linux-32
+        DOCKER_CONTEXT=etc/docker/linux-32
         DOCKER_CONTAINER=linux-32
     - os: windows
       env:
-        DOCKER_CONTEXT=bin/docker/linux-64
+        DOCKER_CONTEXT=etc/docker/linux-64
         DOCKER_CONTAINER=linux-64
   allow_failures:
     - os: osx
       env:
-        CONDA_RECIPE=bin/conda/llvm-suite
+        CONDA_RECIPE=etc/conda/llvm-suite
     - os: windows
       env:
-        CONDA_RECIPE=bin/conda/boost-suite
+        CONDA_RECIPE=etc/conda/boost-suite
 
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
