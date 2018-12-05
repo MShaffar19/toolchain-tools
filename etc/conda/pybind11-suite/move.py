@@ -17,7 +17,7 @@ def main(src, dst, filtered=set(), include=None, exclude=None):
     for root, dirs, files in os.walk(src):
         root = os.path.abspath(root)
         for file in files:
-            oldpath = os.path.join(root, file)
+            oldpath =  os.path.expandvars(os.path.join(root, file))
             MOVE = oldpath not in filtered
             if MOVE and include:
                 MOVE = include in oldpath
