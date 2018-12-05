@@ -36,6 +36,8 @@ def main(src, dst, filtered=set(), include=None, exclude=None):
                         shutil.move(oldpath, newpath)
                     except:
                         print("Couldn't move " + oldpath + "'")
+                    else:
+                        print("moved '" + oldpath + "' to '" + newpath +"'")
     changed = True
     if PY2:
         while changed and len(LINKS) > 0:
