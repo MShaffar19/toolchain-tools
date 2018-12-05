@@ -32,7 +32,10 @@ def main(src, dst, filtered=set(), include=None, exclude=None):
                     dirpath = os.path.dirname(newpath)
                     if not os.path.exists(dirpath):
                         os.makedirs(dirpath)
-                    shutil.move(oldpath, newpath)
+                    try:
+                        shutil.move(oldpath, newpath)
+                    except:
+                        print("Couldn't move " + oldpath + "'")
     changed = True
     if PY2:
         while changed and len(LINKS) > 0:
