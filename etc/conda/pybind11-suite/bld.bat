@@ -8,24 +8,14 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-rem cmake -G "NMake Makefiles" ^
-rem       -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
-rem       -DUSE_PYTHON_INCLUDE_DIR=ON ^
-rem       -DPYBIND11_TEST=OFF ^
-rem       ..
-rem if errorlevel 1 exit 1
-
-rem nmake
-rem if errorlevel 1 exit 1
-
-cmake -G "%CMAKE_GENERATOR%" ^
+cmake -G "NMake Makefiles" ^
       -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
       -DUSE_PYTHON_INCLUDE_DIR=ON ^
       -DPYBIND11_TEST=OFF ^
       ..
 if errorlevel 1 exit 1
 
-cmake --build . --config Release
+nmake
 if errorlevel 1 exit 1
 
 rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
