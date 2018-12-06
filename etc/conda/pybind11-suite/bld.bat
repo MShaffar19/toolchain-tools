@@ -25,7 +25,7 @@ cmake -G "%CMAKE_GENERATOR%" ^
       ..
 if errorlevel 1 exit 1
 
-cmake
+cmake --build . --config Release
 if errorlevel 1 exit 1
 
 rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
