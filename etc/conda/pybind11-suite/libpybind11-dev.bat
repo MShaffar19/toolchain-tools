@@ -8,7 +8,7 @@ if errorlevel 1 exit 1
 rem nmake install
 rem if errorlevel 1 exit 1
 
-make install
+cmake --install .
 if errorlevel 1 exit 1
 
 echo OFF
