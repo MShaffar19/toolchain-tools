@@ -1,7 +1,7 @@
 echo ON
 
-%PYTHON% %RECIPE_DIR%\\filter.py --src=%PREFIX%\\Library --dst=filtered.pkl
-if errorlevel 1 exit 1
+rem %PYTHON% %RECIPE_DIR%\\filter.py --src=%PREFIX%\\Library --dst=filtered.pkl
+rem if errorlevel 1 exit 1
 
 mkdir build
 if errorlevel 1 exit 1
@@ -30,7 +30,7 @@ cd ..
 %PYTHON% setup.py install --single-version-externally-managed --record record.txt
 if errorlevel 1 exit 1
 
-%PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
-%PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Lib --dst=%SRC_DIR%\\Library\\Lib --filtered=filtered.pkl
+rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
+rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Lib --dst=%SRC_DIR%\\Library\\Lib --filtered=filtered.pkl
 
 echo OFF
