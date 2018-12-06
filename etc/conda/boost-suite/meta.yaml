@@ -13,6 +13,7 @@ build:
 requirements:
   build:
     - libtoolchain
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - python
@@ -27,50 +28,45 @@ about:
   license: Boost-1.0
   summary: Boost provides free peer-reviewed portable C++ source libraries.
 
-test:
-  requires:
-    - libtoolchain
-    - {{ compiler('cxx') }}
-    - python
-
 outputs:
   - name: libboost-dev            
     script: libboost-dev.sh   [unix]
     script: libboost-dev.bat  [win]
     requirements:                 
       build:                      
-        - libtoolchain
+      {% for package in resolved_packages('build') %}
+        - {{ package }}
+      {% endfor %}
       host:
-        - icu               [unix]
-        - bzip2             [unix]
-        - libiconv          [osx]
-        - xz
-        - zlib            
+      {% for package in resolved_packages('host') %}
+        - {{ package }}
+      {% endfor %}
   - name: libboost                
     script: libboost.sh     [unix]      
     script: libboost.bat    [win]      
     requirements:                 
       build:                      
-        - libtoolchain
+      {% for package in resolved_packages('build') %}
+        - {{ package }}
+      {% endfor %}
       host:
-        - icu               [unix]
-        - bzip2             [unix]
-        - libiconv          [osx]
-        - xz
-        - zlib            
+      {% for package in resolved_packages('host') %}
+        - {{ package }}
+      {% endfor %}         
   - name: libboost_python
     script: libboost_python.sh  [unix]
     script: libboost_python.bat [win]
     requirements:
-      build:
-        - libtoolchain
+      build:                      
+      {% for package in resolved_packages('build') %}
+        - {{ package }}
+      {% endfor %}
       host:
+      {% for package in resolved_packages('host') %}
+        - {{ package }}
+      {% endfor %}
         - python
-        - icu               [unix]
-        - bzip2             [unix]
-        - libiconv          [osx]
-        - xz
-        - zlib
+        - {{ pin_subpackage("libboost", exact=True) }}
       run:
         - python
         - {{ pin_subpackage("libboost", exact=True) }}
