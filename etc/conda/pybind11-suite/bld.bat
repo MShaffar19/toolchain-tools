@@ -8,18 +8,24 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-set PATH="c:\Program Files (x86)\Windows Kits\10\bin\10.0.16299.0\x64\";%PATH%
-if errorlevel 1 exit 1
+rem cmake -G "NMake Makefiles" ^
+rem       -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
+rem       -DUSE_PYTHON_INCLUDE_DIR=ON ^
+rem       -DPYBIND11_TEST=OFF ^
+rem       ..
+rem if errorlevel 1 exit 1
 
-cmake -G "NMake Makefiles" ^
-      -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ^
-      -D CMAKE_INSTALL_PREFIX=%PREFIX% ^
-      -D USE_PYTHON_INCLUDE_DIR=ON ^
-      -D PYBIND11_TEST=OFF ^
+rem nmake
+rem if errorlevel 1 exit 1
+
+cmake -G "%CMAKE_GENERATOR%" ^
+      -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
+      -DUSE_PYTHON_INCLUDE_DIR=ON ^
+      -DPYBIND11_TEST=OFF ^
       ..
 if errorlevel 1 exit 1
 
-nmake
+make
 if errorlevel 1 exit 1
 
 rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
