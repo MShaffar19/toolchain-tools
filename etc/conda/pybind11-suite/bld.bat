@@ -12,6 +12,7 @@ cmake -G "NMake Makefiles" ^
       -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
       -DUSE_PYTHON_INCLUDE_DIR=ON ^
       -DPYBIND11_TEST=OFF ^
+      --config Release ^
       ..
 if errorlevel 1 exit 1
 
