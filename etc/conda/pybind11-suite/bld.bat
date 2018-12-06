@@ -22,14 +22,6 @@ if errorlevel 1 exit 1
 nmake
 if errorlevel 1 exit 1
 
-nmake install
-if errorlevel 1 exit 1
-
-set PYBIND11_USE_CMAKE=1
-cd ..
-%PYTHON% setup.py install --single-version-externally-managed --record record.txt
-if errorlevel 1 exit 1
-
 rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
 rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Lib --dst=%SRC_DIR%\\Library\\Lib --filtered=filtered.pkl
 
