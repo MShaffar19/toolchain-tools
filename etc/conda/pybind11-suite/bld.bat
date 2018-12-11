@@ -8,6 +8,8 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
+set BUILD_CONFIG=Release
+
 cmake -G "Visual Studio 15 2017 Win64" ^
       -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
       -DUSE_PYTHON_INCLUDE_DIR=ON ^
@@ -16,7 +18,10 @@ cmake -G "Visual Studio 15 2017 Win64" ^
       ..
 if errorlevel 1 exit 1
 
-nmake
+cmake --build . --config "%BUILD_CONFIG%"
+if errorlevel 1 exit 1
+
+cmake --build . --config "%BUILD_CONFIG%" --target install
 if errorlevel 1 exit 1
 
 rem %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
