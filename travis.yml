@@ -32,26 +32,27 @@ services:
   - docker
 
 os:
-  - linux
-  - osx
+  # - linux
+  # - osx
   - windows
 
 dist: trusty
+
 osx_image: xcode8.3
 
 env:
-  - DOCKER_CONTEXT=etc/docker/linux-32
-    DOCKER_CONTAINER=linux-32
-  - DOCKER_CONTEXT=etc/docker/linux-64
-    DOCKER_CONTAINER=linux-64
-  - CONDA_RECIPE=etc/conda/python-scons
-  - CONDA_RECIPE=etc/conda/scons-tools
-  - CONDA_RECIPE=etc/conda/python-parse
-  - CONDA_RECIPE=etc/conda/llvm-suite
-  - CONDA_RECIPE=etc/conda/libtoolchain
-  - CONDA_RECIPE=etc/conda/libtoolchain-dev
-  - CONDA_RECIPE=etc/conda/python-toolchain
-  - CONDA_RECIPE=etc/conda/boost-suite
+  # - DOCKER_CONTEXT=etc/docker/linux-32
+  #   DOCKER_CONTAINER=linux-32
+  # - DOCKER_CONTEXT=etc/docker/linux-64
+  #   DOCKER_CONTAINER=linux-64
+  # - CONDA_RECIPE=etc/conda/python-scons
+  # - CONDA_RECIPE=etc/conda/scons-tools
+  # - CONDA_RECIPE=etc/conda/python-parse
+  # - CONDA_RECIPE=etc/conda/llvm-suite
+  # - CONDA_RECIPE=etc/conda/libtoolchain
+  # - CONDA_RECIPE=etc/conda/libtoolchain-dev
+  # - CONDA_RECIPE=etc/conda/python-toolchain
+  # - CONDA_RECIPE=etc/conda/boost-suite
   - CONDA_RECIPE=etc/conda/pybind11-suite
 
 matrix:

@@ -22,44 +22,44 @@
 ## permissions and limitations under the License.                        ##
 
 package:
-  name: scons-tools
-  version: {{ GIT_DESCRIBE_TAG }}
+    name: scons-tools
+    version: {{ GIT_DESCRIBE_TAG }}
 
 source:
-  path: .
+    path: .
 
 build:
-  number: {{ GIT_DESCRIBE_NUMBER }}
-  features:
-    - vc14                 [win]
-  track_features:
-    - vc14                 [win]
-  run_exports:
-    - vs2015_runtime       [win]
+    number: {{ GIT_DESCRIBE_NUMBER }}
+    features:
+        - vc14                 [win]
+    track_features:
+        - vc14                 [win]
+    run_exports:
+        - vs2015_runtime       [win]
 
 requirements:
-  host:
-    - python
-  run:
-    - python
-    - python-scons
-    - path.py
-    - six
-    - pyyaml
+    host:
+        - python
+    run:
+        - python
+        - python-scons
+        - path.py
+        - six
+        - pyyaml
 
 about:
-  home: http://statiskit.rtfd.io/
-  license: Apache License 2.0
-  summary: SCons Tools for the StatisKit Software Suite
+    home: http://statiskit.rtfd.io/
+    license: Apache License 2.0
+    summary: SCons Tools for the StatisKit Software Suite
 
 test:
-  requires:
-    - {{ compiler('cxx')}}
-  files:
-    - SConstruct
-  commands:
-    - echo $SCONSFLAGS  [not win]
-    - echo %SCONSFLAGS%     [win]
-    - scons -h
-    - scons
+    requires:
+        - {{ compiler('cxx')}}
+    files:
+        - SConstruct
+    commands:
+        - echo $SCONSFLAGS  [not win]
+        - echo %SCONSFLAGS%     [win]
+        - scons -h
+        - scons
 

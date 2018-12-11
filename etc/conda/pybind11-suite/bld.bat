@@ -8,7 +8,7 @@ if errorlevel 1 exit 1
 cd build
 if errorlevel 1 exit 1
 
-cmake -G "NMake Makefiles" ^
+cmake -G "Visual Studio 15 2017 Win64" ^
       -DCMAKE_INSTALL_PREFIX=%PREFIX% ^
       -DUSE_PYTHON_INCLUDE_DIR=ON ^
       -DPYBIND11_TEST=OFF ^
