@@ -1,8 +1,5 @@
 echo ON
 
-:: %PYTHON% %RECIPE_DIR%\\filter.py --src=%PREFIX%\\Library --dst=filtered.pkl
-:: if errorlevel 1 exit 1
-
 mkdir build
 if errorlevel 1 exit 1
 cd build
@@ -20,11 +17,5 @@ if errorlevel 1 exit 1
 
 cmake --build . --config "%BUILD_CONFIG%"
 if errorlevel 1 exit 1
-
-cmake --build . --config "%BUILD_CONFIG%" --target install
-if errorlevel 1 exit 1
-
-:: %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
-:: %PYTHON% %RECIPE_DIR%\\move.py --src=%PREFIX%\\Lib --dst=%SRC_DIR%\\Library\\Lib --filtered=filtered.pkl
 
 echo OFF

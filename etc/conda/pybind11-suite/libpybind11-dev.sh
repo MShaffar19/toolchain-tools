@@ -1,5 +1,7 @@
 set -ve
 
-python ${RECIPE_DIR}/move.py --src=${SRC_DIR}/Library/include --dst=${PREFIX}/include
+cd build
+
+make install
 
 set +ve

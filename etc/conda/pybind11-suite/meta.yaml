@@ -34,34 +34,34 @@ test:
     - libtoolchain
     - python
 
-# outputs:
-#   - name: libpybind11-dev            
-#     script: libpybind11-dev.sh   [unix]
-#     script: libpybind11-dev.bat  [win]
-#     # files: [win]
-#     #   - include\* [win]
-#     requirements:                 
-#       build:                      
-#       {% for package in resolved_packages('build') %}
-#         - {{ package }}
-#       {% endfor %}
-#       host:
-#       {% for package in resolved_packages('host') %}
-#         - {{ package }}
-#       {% endfor %}
-#   - name: python-pybind11                
-#     script: python-pybind11.sh     [unix]      
-#     script: python-pybind11.bat    [win] 
-#     # files:  [win]
-#     #   - Lib [win]     
-#     requirements:                 
-#       build:                      
-#       {% for package in resolved_packages('build') %}
-#         - {{ package }}
-#       {% endfor %}
-#       host:
-#       {% for package in resolved_packages('host') %}
-#         - {{ package }}
-#       {% endfor %}
-#       run:
-#         - python
+outputs:
+  - name: libpybind11-dev            
+    script: libpybind11-dev.sh   [unix]
+    script: libpybind11-dev.bat  [win]
+    # files: [win]
+    #   - include\* [win]
+    requirements:                 
+      build:                      
+      {% for package in resolved_packages('build') %}
+        - {{ package }}
+      {% endfor %}
+      host:
+      {% for package in resolved_packages('host') %}
+        - {{ package }}
+      {% endfor %}
+  - name: python-pybind11                
+    script: python-pybind11.sh     [unix]      
+    script: python-pybind11.bat    [win] 
+    # files:  [win]
+    #   - Lib [win]     
+    requirements:                 
+      build:                      
+      {% for package in resolved_packages('build') %}
+        - {{ package }}
+      {% endfor %}
+      host:
+      {% for package in resolved_packages('host') %}
+        - {{ package }}
+      {% endfor %}
+      run:
+        - python

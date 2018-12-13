@@ -15,7 +15,6 @@ cmake \
   ..
 
 make -j${CPU_COUNT}
-make install
 
 export PYBIND11_USE_CMAKE=1
 cd ..
