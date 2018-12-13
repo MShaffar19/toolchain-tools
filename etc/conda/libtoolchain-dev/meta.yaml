@@ -44,7 +44,7 @@ requirements:
     - python
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ pin_compatible('libtoolchain')) }}
+    - {{ pin_compatible('libtoolchain') }}
     # - python-autowig                                 [not win]
     # - python-clanglite                               [not win]
     # - python-clang                                   [not win]
