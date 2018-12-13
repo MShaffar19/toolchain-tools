@@ -41,15 +41,19 @@ about:
   
 requirements:
   build:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - vc ==14.1                   [win]
     - pywin32                     [win]
     - vs2015_runtime              [win]    
   host:
     - python
   run:
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - vc ==14.1                   [win]
+    - pywin32                     [win]
+    - vs2015_runtime              [win]
     - python
     - python-scons
     - scons-tools
-    - pywin32                     [win]
-    - vs2015_runtime              [win]

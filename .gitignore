@@ -17,3 +17,5 @@ travis-ci
 appveyor_build.bat
 appveyor_job_*.bat
 appveyor-ci
+pybind11-2.2.4/
+v2.2.4.tar.gz

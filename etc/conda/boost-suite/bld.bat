@@ -46,13 +46,10 @@
 
 echo ON
 
-set MSVC_VER=14.0
-set LIB_VER=140
-
 call .\bootstrap.bat
 if errorlevel 1 exit 1
 
-call .\b2 install toolset=msvc-%MSVC_VER% ^
+call .\b2 install toolset=msvc-%VS_VERSION% ^
           address-model=%ARCH% ^
           variant=release ^
           threading=multi ^

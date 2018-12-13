@@ -9,12 +9,16 @@ source:
 
 build:
   number: 0
-
+  features:
+    - vc14                 [win]
+  track_features:
+    - vc14                 [win]
+    
 requirements:
   build:
+    - libtoolchain
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - libtoolchain
     - cmake
   host:
     - python

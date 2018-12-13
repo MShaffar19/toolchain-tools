@@ -9,6 +9,10 @@ source:
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
+  features:
+    - vc14                 [win]
+  track_features:
+    - vc14                 [win]
 
 requirements:
   build:
@@ -29,44 +33,44 @@ about:
   summary: Boost provides free peer-reviewed portable C++ source libraries.
 
 outputs:
-  - name: libboost-dev            
-    script: libboost-dev.sh   [unix]
-    script: libboost-dev.bat  [win]
-    requirements:                 
-      build:                      
-      {% for package in resolved_packages('build') %}
-        - {{ package }}
-      {% endfor %}
-      host:
-      {% for package in resolved_packages('host') %}
-        - {{ package }}
-      {% endfor %}
-  - name: libboost                
-    script: libboost.sh     [unix]      
-    script: libboost.bat    [win]      
-    requirements:                 
-      build:                      
-      {% for package in resolved_packages('build') %}
-        - {{ package }}
-      {% endfor %}
-      host:
-      {% for package in resolved_packages('host') %}
-        - {{ package }}
-      {% endfor %}         
-  - name: libboost_python
-    script: libboost_python.sh  [unix]
-    script: libboost_python.bat [win]
-    requirements:
-      build:                      
-      {% for package in resolved_packages('build') %}
-        - {{ package }}
-      {% endfor %}
-      host:
-      {% for package in resolved_packages('host') %}
-        - {{ package }}
-      {% endfor %}
-        - python
-        - {{ pin_subpackage("libboost", exact=True) }}
-      run:
-        - python
-        - {{ pin_subpackage("libboost", exact=True) }}
+    - name: libboost-dev            
+      script: libboost-dev.sh   [unix]
+      script: libboost-dev.bat  [win]
+      requirements:                 
+        build:                      
+          {% for package in resolved_packages('build') %}
+          - {{ package }}
+          {% endfor %}
+        host:
+          {% for package in resolved_packages('host') %}
+          - {{ package }}
+          {% endfor %}
+    - name: libboost                
+      script: libboost.sh     [unix]      
+      script: libboost.bat    [win]      
+      requirements:                 
+        build:                      
+          {% for package in resolved_packages('build') %}
+          - {{ package }}
+          {% endfor %}
+        host:
+          {% for package in resolved_packages('host') %}
+          - {{ package }}
+          {% endfor %}         
+    - name: libboost_python
+      script: libboost_python.sh  [unix]
+      script: libboost_python.bat [win]
+      requirements:
+        build:                      
+          {% for package in resolved_packages('build') %}
+            - {{ package }}
+          {% endfor %}
+        host:
+          {% for package in resolved_packages('host') %}
+            - {{ package }}
+          {% endfor %}
+          - python
+          - {{ pin_subpackage("libboost", exact=True) }}
+        run:
+          - python
+          - {{ pin_subpackage("libboost", exact=True) }}
