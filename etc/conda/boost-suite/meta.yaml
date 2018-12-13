@@ -16,11 +16,11 @@ build:
 
 requirements:
   build:
-    - libtoolchain
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - python
+    - libtoolchain
     - icu               [unix]
     - bzip2             [unix]
     - libiconv          [osx]

@@ -42,8 +42,8 @@ requirements:
   host:
     - python
   run:
+    - python
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - python
-    - python-scons
-    - scons-tools
+    - {{ pin_compatible('python-scons') }}
+    - {{ pin_compatible('scons-tools') }}

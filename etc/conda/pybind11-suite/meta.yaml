@@ -16,13 +16,13 @@ build:
     
 requirements:
   build:
-    - libtoolchain
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
   host:
     - python
     - setuptools
+    - libtoolchain
 
 about:
   home: https://pybind11.readthedocs.io
