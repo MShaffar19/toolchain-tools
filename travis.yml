@@ -49,10 +49,10 @@ env:
   # - CONDA_RECIPE=etc/conda/scons-tools
   # - CONDA_RECIPE=etc/conda/python-parse
   # - CONDA_RECIPE=etc/conda/llvm-suite
-  # - CONDA_RECIPE=etc/conda/libtoolchain
-  # - CONDA_RECIPE=etc/conda/libtoolchain-dev
-  # - CONDA_RECIPE=etc/conda/python-toolchain
-  # - CONDA_RECIPE=etc/conda/boost-suite
+  - CONDA_RECIPE=etc/conda/libtoolchain
+  - CONDA_RECIPE=etc/conda/libtoolchain-dev
+  - CONDA_RECIPE=etc/conda/python-toolchain
+  - CONDA_RECIPE=etc/conda/boost-suite
   - CONDA_RECIPE=etc/conda/pybind11-suite
 
 matrix:
