@@ -27,12 +27,6 @@ package:
     
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
-  features:
-    - vc14                 [win]
-  track_features:
-    - vc14                 [win]
-  run_exports:
-    - vs2015_runtime       [win]
 
 about:
   home: http://statiskit.rtfd.io/
@@ -43,17 +37,13 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - vc ==14.1                   [win]
-    - pywin32                     [win]
-    - vs2015_runtime              [win]    
+    - python-scons
+    - scons-tools
   host:
     - python
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - vc ==14.1                   [win]
-    - pywin32                     [win]
-    - vs2015_runtime              [win]
     - python
     - python-scons
     - scons-tools
