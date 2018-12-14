@@ -36,8 +36,6 @@ about:
 requirements:
   build:
     - setuptools
-    - pip
-    - setuptools
     - scons-tools
     - path.py
     - pyyaml
