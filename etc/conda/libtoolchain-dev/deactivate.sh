@@ -20,13 +20,3 @@
 ## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or       ##
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
-
-set -ve
-
-mkdir -p ${PREFIX}/etc/conda/activate.d
-cp ${RECIPE_DIR}/activate.sh ${PREFIX}/etc/conda/activate.d/libtoolchain_vars.sh
-
-mkdir -p ${PREFIX}/etc/conda/deactivate.d
-cp ${RECIPE_DIR}/deactivate.sh ${PREFIX}/etc/conda/deactivate.d/libtoolchain_vars.sh
-
-set +ve
