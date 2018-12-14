@@ -39,8 +39,9 @@ about:
   summary: parse() is the opposite of format()
 
 requirements:
+  build:
+    - setuptools
   host:
     - python
-    - setuptools
   run:
     - python

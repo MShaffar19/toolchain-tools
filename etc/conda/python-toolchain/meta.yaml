@@ -27,8 +27,6 @@ package:
     
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
-  run_exports:
-    - pywin32                      [win]
     
 about:
   home: http://statiskit.rtfd.io/
@@ -36,22 +34,25 @@ about:
   summary: Collection of utilities for building Python packages.
 
 requirements:
-  host:
-    - python
+  build:
     - setuptools
     - pip
-  run:
-    - python
     - setuptools
     - scons-tools
     - path.py
-    - pywin32                      [win]
     - pyyaml
     - nose
     - coverage
     - sphinx
     - pillow
     - libtoolchain
+  host:
+    - python
+  run:
+  {% for package in resolved_packages('build') %}
+    - {{ package }}
+  {% endfor %}
+    - python
 
 test:                          
   commands:                    

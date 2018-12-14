@@ -19,10 +19,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
-  host:
-    - python
     - setuptools
     - libtoolchain
+  host:
+    - python
 
 about:
   home: https://pybind11.readthedocs.io

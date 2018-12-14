@@ -36,6 +36,8 @@ build:
   number: {{ GIT_DESCRIBE_NUMBER }}
 
 requirements:
+  build:
+    - setuptools
   host:
     - python
   run:

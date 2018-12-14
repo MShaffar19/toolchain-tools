@@ -42,8 +42,7 @@ requirements:
   host:
     - python
   run:
+  {% for package in resolved_packages('build') %}
+    - {{ package }}
+  {% endfor %}
     - python
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ pin_compatible('python-scons') }}
-    - {{ pin_compatible('scons-tools') }}
