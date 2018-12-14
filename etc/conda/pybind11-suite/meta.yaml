@@ -38,8 +38,6 @@ outputs:
   - name: libpybind11-dev            
     script: libpybind11-dev.sh   [unix]
     script: libpybind11-dev.bat  [win]
-    # files: [win]
-    #   - include\* [win]
     requirements:                 
       build:                      
       {% for package in resolved_packages('build') %}
@@ -51,9 +49,7 @@ outputs:
       {% endfor %}
   - name: python-pybind11                
     script: python-pybind11.sh     [unix]      
-    script: python-pybind11.bat    [win] 
-    # files:  [win]
-    #   - Lib [win]     
+    script: python-pybind11.bat    [win]      
     requirements:                 
       build:                      
       {% for package in resolved_packages('build') %}
