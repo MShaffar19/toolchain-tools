@@ -24,8 +24,8 @@
 .. image:: https://img.shields.io/badge/License-Apache%202.0-yellow.svg
    :target: https://opensource.org/licenses/Apache-2.0
    
-.. image:: https://travis-ci.org/StatisKit/Misc.svg?branch=master
-   :target: https://travis-ci.org/StatisKit/Misc
+.. image:: https://travis-ci.org/StatisKit/toolchain-tools.svg?branch=master
+   :target: https://travis-ci.org/StatisKit/toolchain-tools
   
-**StatisKit.Misc**: Dependencies of the **StatisKit** Software Suite for Statistical Analyses
-#############################################################################################
+Tools Used by the Statiskit Software Suite Toolchain
+####################################################
