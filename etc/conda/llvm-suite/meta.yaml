@@ -38,20 +38,6 @@
 {% set openmp_sha256 = 'ec693b170e0600daa7b372240a06e66341ace790d89eaf4a843e8d56d5f4ada4' %}
 {% set clang_llvm_bin_sha256 = '5f697801a46239c04251730b7ccccd3ebbacb9043ad381a061ae6812409e9eae' %}
 
-# {% set releases_url="prereleases" %}
-# {% set version="5.0.0rc5" %}
-# {% set version_dash="5.0.0-rc5" %}
-# {% set version_dir="5.0.0/rc5" %}
-# {% set llvm_sha256 = '00fec4a3195f3bd233501373a4812c71a9183e8a8643ad31a1114e1372fa1f87' %}
-# {% set cfe_sha256 = 'bd19a5eb92731745721f67f12a82af8787eda4fc992ed79c9c4b0aac5e31de3a' %}
-# {% set polly_sha256 = '0a29d0c7c5aba7f556a9a8c2078021180dc23b90d3c9679515b90b4faea4be54' %}
-# {% set compiler_rt_sha256 = 'd1b2fa9222bd60b8920ec30c6931995a7497c176ed3208645594ac34287ba2c5' %}
-# {% set libcxx_sha256 = 'd0962eeaaa58406f2d6eeeb3e2ae8fdad9a8e63117eecd7e0fa7fed024305dcd' %}
-# {% set libcxxabi_sha256 = '8d51002c69146ea7010606412ee6ea49f9c1c2be630698a431a084c83208a1f9' %}
-# {% set libunwind_sha256 = 'a5e45128d1fb6a71bb5e584476c62f3fd6a9b128560c95ed696d2b0bb5681b28' %}
-# {% set openmp_sha256 = 'c18ba10cb81e5627f1e77d045efe30db13584eb2df957552d0946010c546bbc5' %}
-# {% set clang_llvm_bin_sha256 = '5d70313ed1cfdf25e36aefae07bab97e8ebfbb8e5ba5bd1bc80aa992cad19b08' %}
-
 {% set native_compiler_subdir=build_platform %}
 {% set cctools_version = '895' %}
 {% set cctools_sha256 = 'ce66034fa35117f9ae76bbb7dd72d8068c405778fa42e877e8a13237a10c5cb7' %}
@@ -171,11 +157,11 @@ source:
       - 530-ld64-add-conda-specific-env-vars-to-modify-lib-search-paths.patch
     # Because macOS 10.9's clang is too old (problems with atomics)
   - url: http://{{ releases_url }}.llvm.org/{{ version_dir }}/clang+llvm-{{ version_dash }}-x86_64-apple-darwin.tar.xz       [osx]
-    sha256: {{ clang_llvm_bin_sha256 }}
+    sha256: {{ clang_llvm_bin_sha256 }}                                                                   [osx]
     folder: bootstrap                                                                                     [osx]
   # We copy headers necessary for building cctools/ld64 from dyld and MacOSX10.9.sdk (on all OSes).
   # older versions of these files are added by 100-add_sdkroot_headers.patch, we overwrite those...
-  - url: https://opensource.apple.com/tarballs/dyld/dyld-{{ dyld_version }}.tar.gz
+  - url: https://opensource.apple.com/tarballs/dyld/dyld-{{ dyld_version }}.tar.gz 
     sha256: {{ dyld_sha256 }}
     folder: bootstrap/dyld
   - url: https://github.com/phracker/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.9.sdk.tar.xz
