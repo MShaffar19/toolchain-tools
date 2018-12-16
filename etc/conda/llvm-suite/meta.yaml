@@ -56,7 +56,7 @@
 {% set cctools_version = '895' %}
 {% set cctools_sha256 = 'ce66034fa35117f9ae76bbb7dd72d8068c405778fa42e877e8a13237a10c5cb7' %}
 {% set ld64_version = '274.2' %}
-{% set ld64_sha256 = '175d89c419e99d49a7a5f7e4196d3cef4c9e19cc17a425c332e86df6b516f7d7' %}
+{% set ld64_sha256 = '5f697801a46239c04251730b7ccccd3ebbacb9043ad381a061ae6812409e9eae' %}
 {% set dyld_version = '433.5' %}
 {% set dyld_sha256 = '13e370ed12c137f0153a96bab12e1d46896db07f8a40bac6b0529585ceac9260' %}
 {% set tapi_version = '1.30' %}
