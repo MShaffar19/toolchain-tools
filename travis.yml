@@ -90,6 +90,9 @@ matrix:
     - os: windows
       env:
         CONDA_RECIPE=etc/conda/boost-suite
+    - os: windows
+      env:
+        CONDA_RECIPE=etc/conda/pybind11-suite
 
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
