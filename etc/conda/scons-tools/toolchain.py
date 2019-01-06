@@ -119,6 +119,7 @@ def generate(env):
                               CCFLAGS=['-fvisibility=' + VISIBILITY])
             env.AppendUnique(CCFLAGS = os.environ['CFLAGS'].split(" "),
                              CPPFLAGS = os.environ['CPPFLAGS'].split(" "),
+                             CXXFLAGS = os.environ['CXXFLAGS'].split(" "),
                              LDFLAGS = os.environ['LDFLAGS'].split(" "))
             if SYSTEM == 'linux':
                 DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
