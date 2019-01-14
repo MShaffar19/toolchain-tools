@@ -24,7 +24,7 @@
 echo ON
 
 if not exist %PREFIX%\etc\conda\activate.d mkdir %PREFIX%\etc\conda\activate.d
-copy %RECIPE_DIR%\activate.bat %PREFIX%\etc\conda\activate.d\scons_tools_vars.bat
+copy %RECIPE_DIR%\activate.bat %PREFIX%\etc\conda\activate.d\scons-tools_vars.bat
 
 if not exist %PREFIX%\etc\conda\deactivate.d mkdir %PREFIX%\etc\conda\deactivate.d
 copy %RECIPE_DIR%\deactivate.bat %PREFIX%\etc\conda\deactivate.d\scons_tools_vars.bat

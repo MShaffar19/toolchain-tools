@@ -60,7 +60,7 @@ def generate(env, **kwargs):
         
       def PythonPackage(env, **kwargs):
         pattern = kwargs.pop('pattern', None)
-        packages = {kwarg : Path(env.Dir(kwargs[kwarg]).srcnode().abspath).walkfiles(pattern=pattern) for kwarg in kwargs}
+        packages = {kwarg : Path(env.Dir(kwargs[kwarg]).srcnode().abspath).walkfiles(pattern) for kwarg in kwargs}
         targets = []
         SP_DIR = env['SP_DIR']
         for package in packages:

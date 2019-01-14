@@ -35,21 +35,20 @@ about:
 
 requirements:
   build:
-    - setuptools
+    - python-scons
     - scons-tools
+  host:
+    - python
+  run:
+    - setuptools
+    - {{ pin_compatible('python-scons', min_pin='x.x', max_pin='x.x') }}
+    - {{ pin_compatible('scons-tools', min_pin='x.x', max_pin='x.x') }}
     - path.py
     - pyyaml
     - nose
     - coverage
     - sphinx
     - pillow
-    - libtoolchain
-  host:
-    - python
-  run:
-  {% for package in resolved_packages('build') %}
-    - {{ package }}
-  {% endfor %}
     - python
 
 test:                          

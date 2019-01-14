@@ -42,7 +42,6 @@ requirements:
   host:
     - python
   run:
-  {% for package in resolved_packages('build') %}
-    - {{ package }}
-  {% endfor %}
+    - {{ pin_compatible('python-scons', min_pin='x.x', max_pin='x.x') }}
+    - {{ pin_compatible('scons-tools', min_pin='x.x', max_pin='x.x') }}
     - python
