@@ -111,8 +111,12 @@ def generate(env):
         else:
             env['AR'] = os.environ['AR']
             env['AS'] = os.environ['AS']
-            env['CC'] = os.environ['CC']
-            env['CXX'] = os.environ['CXX']
+            if SYSTEM == 'osx':
+              env['CC'] = os.environ['CLANG']
+              env['CXX'] = os.environ['CLANGXX']
+            else:
+              env['CC'] = os.environ['GCC']
+              env['CXX'] = os.environ['GXX']
             VISIBILITY = env['VISIBILITY']
             env.PrependUnique(CPPPATH=['$PREFIX/include'],
                               LIBPATH=['$PREFIX/lib'],
