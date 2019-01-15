@@ -121,7 +121,11 @@ else:
                 wrappers.header.helder = env['AUTOWIG_HELDER']
                 if not env['AUTOWIG_NO_WRAPPERS']:
                     wrappers.write()
-                with open(target[-1].abspath, 'wb') as filehandler:
+                target = target[-1].abspath.replace(os.environ['BUILD_PREFIX'], os.environ['PREFIX'])
+                target_dir = os.path.abspath(os.path.join(target, os.pardir))
+                if not os.path.exists(target_dir):
+                    os.makedirs(target_dir)
+                with open(target, 'wb') as filehandler:
                     pickle.dump(asg, filehandler)
                 return None
 
