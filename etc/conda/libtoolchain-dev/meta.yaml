@@ -37,11 +37,11 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - libtoolchain
+    - python-scons
+    - scons-tools
   host:
     - python
   run:
-  {% for package in resolved_packages('build') %}
-    - {{ package }}
-  {% endfor %}
+    - {{ pin_compatible('python-scons', exact=True) }}
+    - {{ pin_compatible('scons-tools', exact=True) }}
     - python
