@@ -23,7 +23,7 @@
 
 package:
   name: python-parse
-  version: 1.9.0
+  version: "1.9.0"
 
 source:
   fn: parse-1.9.0.tar.gz

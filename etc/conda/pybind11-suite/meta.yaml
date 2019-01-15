@@ -1,6 +1,6 @@
 package:
   name: pybind11-suite
-  version: 2.2.4
+  version: "2.2.4"
 
 source:
   fn: v2.2.4.tar.gz
@@ -8,7 +8,7 @@ source:
   url: https://github.com/pybind/pybind11/archive/v2.2.4.tar.gz
 
 build:
-  number: 0
+  number: {{ GIT_DESCRIBE_NUMBER }}
     
 requirements:
   build:

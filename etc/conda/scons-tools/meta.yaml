@@ -23,7 +23,7 @@
 
 package:
   name: scons-tools
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: {{ GIT_DESCRIBE_VERSION }}
 
 source:
   path: .
