@@ -71,7 +71,7 @@ else:
             env['AUTOWIG_NO_WRAPPERS'] = GetOption('autowig_no_wrappers')
 
             def boost_python_builder(target, source, env):
-                SITE_AUTOWIG = env['SITE_AUTOWIG']
+                SITE_AUTOWIG = env['SITE_AUTOWIG']#.replace(os.environ['BUILD_PREFIX'], os.environ['PREFIX'])
                 if 'AUTOWIG_ASG' in env:
                     try:
                         env['AUTOWIG_ASG'][env['AUTOWIG_generator_module'].abspath].remove()
@@ -121,7 +121,7 @@ else:
                 wrappers.header.helder = env['AUTOWIG_HELDER']
                 if not env['AUTOWIG_NO_WRAPPERS']:
                     wrappers.write()
-                target = target[-1].abspath.replace(os.environ['BUILD_PREFIX'], os.environ['PREFIX'])
+                target = target[-1].abspath
                 target_dir = os.path.abspath(os.path.join(target, os.pardir))
                 if not os.path.exists(target_dir):
                     os.makedirs(target_dir)
@@ -144,18 +144,21 @@ else:
                 targets = []
                 if parser.endswith('.py'):
                     targets.append(env.InstallAs(os.path.join(SITE_AUTOWIG, 'parser', target + '.py'), parser))
+                    targets.append(env.InstallAs(os.path.join(SITE_AUTOWIG.replace(os.environ['BUILD_PREFIX'], os.environ['PREFIX']), 'parser', target + '.py'), parser))
                     parser = target
                 autowig_env['AUTOWIG_PARSER'] = parser
                 if controller.endswith('.py'):
                     targets.append(env.InstallAs(os.path.join(SITE_AUTOWIG, 'controller', target + '.py'), controller))
+                    targets.append(env.InstallAs(os.path.join(SITE_AUTOWIG.replace(os.environ['BUILD_PREFIX'], os.environ['PREFIX']), 'controller', target + '.py'), controller))
                     controller = target
                 autowig_env['AUTOWIG_CONTROLLER'] = controller
                 if generator.endswith('.py'):
                     targets.append(env.InstallAs(os.path.join(SITE_AUTOWIG, 'generator', target + '.py'), generator))
+                    targets.append(env.InstallAs(os.path.join(SITE_AUTOWIG.replace(os.environ['BUILD_PREFIX'], os.environ['PREFIX']), 'generator', target + '.py'), generator))
                     generator = target
                 autowig_env['AUTOWIG_GENERATOR'] = generator
 
-                targets.append(autowig_env.File(os.path.join(SITE_AUTOWIG, 'ASG', target + '.pkl')))
+                targets.append(autowig_env.File(os.path.join(SITE_AUTOWIG.replace(os.environ['BUILD_PREFIX'], os.environ['PREFIX']), 'ASG', target + '.pkl')))
                 for target in targets[:-1]:
                     autowig_env.Depends(targets[-1], target)
 
