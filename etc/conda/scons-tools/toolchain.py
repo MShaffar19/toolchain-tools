@@ -73,9 +73,9 @@ def generate(env):
         RTTI = env['RTTI']
         if RTTI == 'no':
             if SYSTEM == 'win':
-                env.AppendUnique(CXXFLAGS=['/GR-'])
+                env.AppendUnique(CCFLAGS=['/GR-'])
             else:
-                env.AppendUnique(CXXFLAGS=['-fno-rtti'])
+                env.AppendUnique(CCFLAGS=['-fno-rtti'])
         if SYSTEM == 'win':
             env['TARGET_ARCH'] = 'amd64' if ARCH == '64' else 'x86'
             env['HOST_ARCH'] = env['TARGET_ARCH']
