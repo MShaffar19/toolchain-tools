@@ -54,6 +54,7 @@ def generate(env):
               help    = 'Debug symbols',
               default = 'no',
               choices = ['no', 'yes'])
+        env['DEBUG_SYMBOLS'] = GetOption('debug-symbols')
         DEBUG_SYMBOLS = env['DEBUG_SYMBOLS']
         if DEBUG_SYMBOLS == 'yes':
             if SYSTEM == 'win':
