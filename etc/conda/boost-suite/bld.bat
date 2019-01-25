@@ -49,7 +49,7 @@ echo ON
 call .\bootstrap.bat
 if errorlevel 1 exit 1
 
-call .\b2 install toolset=msvc-%VS_VERSION% ^
+call .\b2 install toolset=msvc-14.0 ^
           address-model=%ARCH% ^
           variant=release ^
           threading=multi ^
