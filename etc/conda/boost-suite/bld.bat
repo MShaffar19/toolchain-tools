@@ -46,6 +46,9 @@
 
 echo ON
 
+python %RECIPE_DIR%/filter.py --src=%PREFIX%\\Library --dst=filtered.pkl
+if errorlevel 1 exit 1
+
 call .\bootstrap.bat
 if errorlevel 1 exit 1
 
