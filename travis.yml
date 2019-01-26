@@ -83,16 +83,16 @@ matrix:
       env:
         DOCKER_CONTEXT=etc/docker/linux-64
         DOCKER_CONTAINER=linux-64
-  allow_failures:
-    - os: osx
-      env:
-        CONDA_RECIPE=etc/conda/llvm-suite
     - os: windows
       env:
         CONDA_RECIPE=etc/conda/boost-suite
     - os: windows
       env:
         CONDA_RECIPE=etc/conda/pybind11-suite
+  allow_failures:
+    - os: osx
+      env:
+        CONDA_RECIPE=etc/conda/llvm-suite
 
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
