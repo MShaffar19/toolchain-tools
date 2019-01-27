@@ -38,7 +38,7 @@ os:
 
 dist: trusty
 
-osx_image: xcode6.4
+osx_image: xcode8.3
 
 env:
   # - DOCKER_CONTEXT=etc/docker/linux-32
