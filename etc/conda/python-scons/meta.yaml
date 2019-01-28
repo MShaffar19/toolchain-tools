@@ -43,6 +43,7 @@ requirements:
   run:
     - python
     - six
+    - pywin32 # [win]
     
 about:
   home: http://www.scons.org/

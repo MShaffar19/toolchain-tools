@@ -61,21 +61,6 @@ def generate(env):
                 env.AppendUnique(CCFLAGS=['/DEBUG:FULL'])
             else:
                 env.AppendUnique(CCFLAGS=['-g'])
-        AddOption('--rtti',
-              dest    = 'rtti',
-              type    = 'choice',
-              nargs   = 1,
-              action  = 'store',
-              help    = 'Compile with RTTI or not',
-              default = 'yes',
-              choices = ['no', 'yes'])
-        env['RTTI'] = GetOption('rtti')
-        RTTI = env['RTTI']
-        if RTTI == 'no':
-            if SYSTEM == 'win':
-                env.AppendUnique(CXXFLAGS=['/GR-'])
-            else:
-                env.AppendUnique(CXXFLAGS=['-fno-rtti'])
         if SYSTEM == 'win':
             env['TARGET_ARCH'] = 'amd64' if ARCH == '64' else 'x86'
             env['HOST_ARCH'] = env['TARGET_ARCH']
