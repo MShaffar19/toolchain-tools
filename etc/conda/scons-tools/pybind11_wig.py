@@ -87,7 +87,7 @@ else:
                 AUTOWIG_PARSER = env['AUTOWIG_PARSER']
                 if not AUTOWIG_PARSER in autowig.parser:
                     filename = os.path.join(SITE_AUTOWIG, 'parser', AUTOWIG_PARSER + '.py')
-                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals(), locals())
                     # parser = import_module('scons_tools.site_autowig.parser.' +  AUTOWIG_PARSER)
                     autowig.parser[AUTOWIG_PARSER] = parser
                 autowig.parser.plugin = AUTOWIG_PARSER
@@ -103,7 +103,7 @@ else:
                 AUTOWIG_CONTROLLER = env['AUTOWIG_CONTROLLER']
                 if not AUTOWIG_CONTROLLER in autowig.controller:
                     filename = os.path.join(SITE_AUTOWIG, 'controller', AUTOWIG_CONTROLLER + '.py')
-                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals(), locals())
                     autowig.controller[AUTOWIG_CONTROLLER] = controller
                 autowig.controller.plugin = AUTOWIG_CONTROLLER
                 kwargs = {kwarg[len('AUTOWIG_controller_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_controller_')}
@@ -115,7 +115,7 @@ else:
                 AUTOWIG_GENERATOR = env['AUTOWIG_GENERATOR']
                 if not AUTOWIG_GENERATOR in autowig.generator:
                     filename = os.path.join(SITE_AUTOWIG, 'generator', AUTOWIG_GENERATOR + '.py')
-                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals(), locals())
                     autowig.generator[AUTOWIG_GENERATOR] = generator
                 autowig.generator.plugin = AUTOWIG_GENERATOR
                 kwargs = {kwarg[len('AUTOWIG_generator_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_generator_')}
