@@ -23,13 +23,13 @@
 
 package:
   name: scons-tools
-  version: {{ GIT_DESCRIBE_VERSION }}
+  version: {{ DATETIME_DESCRIBE_VERSION }}
 
 source:
   path: .
 
 build:
-  number: {{ GIT_DESCRIBE_NUMBER }}
+  number: {{ DATETIME_DESCRIBE_NUMBER }}
 
 requirements:
   build:
