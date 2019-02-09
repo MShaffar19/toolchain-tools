@@ -86,8 +86,10 @@ else:
                         asg.merge(pickle.load(filehandler))
                 AUTOWIG_PARSER = env['AUTOWIG_PARSER']
                 if not AUTOWIG_PARSER in autowig.parser:
-                    parser = import_module('scons_tools.site_autowig.parser.' +  AUTOWIG_PARSER)
-                    autowig.parser[AUTOWIG_PARSER] = parser.parser
+                    filename = os.path.join(SITE_AUTOWIG, 'parser', AUTOWIG_PARSER + '.py')
+                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+                    # parser = import_module('scons_tools.site_autowig.parser.' +  AUTOWIG_PARSER)
+                    autowig.parser[AUTOWIG_PARSER] = parser
                 autowig.parser.plugin = AUTOWIG_PARSER
                 kwargs = {kwarg[len('AUTOWIG_parser_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_parser_')}
                 for key, value in kwargs.items():
@@ -100,8 +102,9 @@ else:
                                **kwargs)
                 AUTOWIG_CONTROLLER = env['AUTOWIG_CONTROLLER']
                 if not AUTOWIG_CONTROLLER in autowig.controller:
-                    controller = import_module('scons_tools.site_autowig.controller.' +  AUTOWIG_CONTROLLER)
-                    autowig.controller[AUTOWIG_CONTROLLER] = controller.controller
+                    filename = os.path.join(SITE_AUTOWIG, 'controller', AUTOWIG_CONTROLLER + '.py')
+                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+                    autowig.controller[AUTOWIG_CONTROLLER] = controller
                 autowig.controller.plugin = AUTOWIG_CONTROLLER
                 kwargs = {kwarg[len('AUTOWIG_controller_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_controller_')}
                 for key, value in kwargs.items():
@@ -111,8 +114,9 @@ else:
                                          **kwargs)
                 AUTOWIG_GENERATOR = env['AUTOWIG_GENERATOR']
                 if not AUTOWIG_GENERATOR in autowig.generator:
-                    generator = import_module('scons_tools.site_autowig.generator.' +  AUTOWIG_GENERATOR)
-                    autowig.generator[AUTOWIG_GENERATOR] = generator.generator
+                    filename = os.path.join(SITE_AUTOWIG, 'generator', AUTOWIG_GENERATOR + '.py')
+                    exec(compile(open(filename, "rb").read(), filename, 'exec'), globals, locals)
+                    autowig.generator[AUTOWIG_GENERATOR] = generator
                 autowig.generator.plugin = AUTOWIG_GENERATOR
                 kwargs = {kwarg[len('AUTOWIG_generator_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_generator_')}
                 for key, value in kwargs.items():
