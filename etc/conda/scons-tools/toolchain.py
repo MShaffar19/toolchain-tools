@@ -42,6 +42,8 @@ def generate(env):
                 help = 'Target architecture',
                 choices = ['32', '64'],
                 default = '64' if maxsize.bit_length() == 63 else '32')
+        env.Tool('prefix')
+        PREFIX = env['PREFIX']
         env.Tool('system')
         SYSTEM = env['SYSTEM']
         env['ARCH'] = GetOption('arch')
@@ -105,9 +107,9 @@ def generate(env):
                                       '/GA'],
                              CPPDEFINES=['WIN32',
                                          'UNICODE'])
-            env.PrependUnique(CPPPATH=['$PREFIX\include'])
-            env.PrependUnique(LIBPATH=['$PREFIX\lib',
-                                       '$PREFIX\..\libs'])
+            env.PrependUnique(CPPPATH=[os.path.join(PREFIX, 'include')])
+            env.PrependUnique(LIBPATH=[os.path.join(PREFIX, 'lib'),
+                                       os.path.join(PREFIX, '..', 'libs')])
         else:
             env['AR'] = os.environ['AR']
             env['AS'] = os.environ['AS']
@@ -118,8 +120,8 @@ def generate(env):
               env['CC'] = os.environ['GCC']
               env['CXX'] = os.environ['GXX']
             VISIBILITY = env['VISIBILITY']
-            env.PrependUnique(CPPPATH=['$PREFIX/include'],
-                              LIBPATH=['$PREFIX/lib'],
+            env.PrependUnique(CPPPATH=[os.path.join(PREFIX, 'include')],
+                              LIBPATH=[os.path.join(PREFIX, 'lib')],
                               CCFLAGS=['-fvisibility=' + VISIBILITY])
             env.AppendUnique(CCFLAGS = os.environ['CFLAGS'].split(" "),
                              CPPFLAGS = os.environ['CPPFLAGS'].split(" "),
