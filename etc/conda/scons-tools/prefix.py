@@ -46,4 +46,3 @@ def generate(env, **kwargs):
                       default = sysprefix)
         
         env['PREFIX'] = GetOption('prefix')
-        env['BUILD_PREFIX'] = os.environ.get('BUILD_PREFIX', '$PREFIX')

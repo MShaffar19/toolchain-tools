@@ -116,13 +116,14 @@ def generate(env):
               env['CC'] = os.environ['CLANG']
               env['CXX'] = os.environ['CLANGXX']
             else:
+              sysroot = ['--sysroot=' + os.path.join(os.environ['BUILD_PREFIX'], os.environ['HOST'], 'sysroot')]
+              env.AppendUnique(CXXFLAGS=sysroot,
+                               LINKFLAGS=sysroot)
               env['CC'] = os.environ['GCC']
               env['CXX'] = os.environ['GXX']
             VISIBILITY = env['VISIBILITY']
-            env.PrependUnique(CPPPATH=[os.path.join('$PREFIX', 'include'),
-                                       os.path.join('$BUILD_PREFIX', 'include')],
-                              LIBPATH=[os.path.join('$PREFIX', 'lib'),
-                                       os.path.join('$BUILD_PREFIX', 'lib')],
+            env.PrependUnique(CPPPATH=[os.path.join('$PREFIX', 'include')],
+                              LIBPATH=[os.path.join('$PREFIX', 'lib')],
                               CCFLAGS=['-fvisibility=' + VISIBILITY])
             env.AppendUnique(CCFLAGS = os.environ['CFLAGS'].split(" "),
                              CPPFLAGS = os.environ['CPPFLAGS'].split(" "),
