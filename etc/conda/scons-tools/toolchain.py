@@ -116,7 +116,7 @@ def generate(env):
               env['CC'] = os.environ['CLANG']
               env['CXX'] = os.environ['CLANGXX']
             else:
-              sysroot = ['--sysroot=' + os.path.join(os.environ['BUILD_PREFIX'], os.environ['HOST'], 'sysroot')]
+              sysroot = ['--sysroot=' + os.path.join(os.environ.get('BUILD_PREFIX', '$PREFIX'), os.environ['HOST'], 'sysroot')]
               env.AppendUnique(CXXFLAGS=sysroot,
                                LINKFLAGS=sysroot)
               env['CC'] = os.environ['GCC']
