@@ -38,9 +38,9 @@ def generate(env):
             # Code to build "target" from "source"
             SYSTEM = env['SYSTEM']
             if isinstance(target, (list, tuple)):
-                return env.Install(os.path.join(env['PREFIX'], "include", *target), sources)
+                return env.Install(os.path.join('$PREFIX', "include", *target), sources)
             else:
-                return env.Install(os.path.join(env['PREFIX'], "include", target), sources)
+                return env.Install(os.path.join('$PREFIX', "include", target), sources)
 
         env.AddMethod(CppDev)
 
@@ -59,10 +59,10 @@ def generate(env):
                 dll, lib, exp = env.SharedLibrary(os.path.join(env.Dir(".").abspath, target),
                                                   sources,
                                                   **kwargs)
-                targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
-                targets += env.Install(os.path.join(env['PREFIX'], "lib"), lib)
+                targets += env.Install(os.path.join('$PREFIX', "bin"), dll)
+                targets += env.Install(os.path.join('$PREFIX', "lib"), lib)
             else:
-                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                targets += env.SharedLibrary(os.path.join('$PREFIX', "lib", target),
                                              sources,
                                               **kwargs)
             return targets

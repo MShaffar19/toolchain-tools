@@ -63,7 +63,7 @@ else:
                       action  = 'store',
                       metavar = 'DIR',
                       help    = '',
-                      default = os.path.join(SP_DIR, 'scons_tools', 'site_autowig'))
+                      default = os.path.join('$SP_DIR', 'scons_tools', 'site_autowig'))
             env['SITE_AUTOWIG'] = GetOption('site-autowig')
 
             AddOption('--autowig-no-wrappers',

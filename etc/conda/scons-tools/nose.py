@@ -62,7 +62,6 @@ def generate(env):
             noseenv['ENV'].update(os.environ)
             TEST_LEVEL = noseenv['TEST_LEVEL']
             SYSTEM = noseenv['SYSTEM']
-            SP_DIR = noseenv['SP_DIR']
             categories = ['none', 'unit', 'inte', 'func']
             FLAGS = " -s -v"
             FLAGS += ' -A "' + SYSTEM + ' and level <= ' +str(categories.index(TEST_LEVEL)) + '"'
@@ -75,7 +74,7 @@ def generate(env):
             if WITH_NOSE_DEBUG == 'gdb':
                 if len(sources) > 0:
                     targets = noseenv.Textfile(target = 'nosetests.gdb',
-                                               source = ["run " + os.path.join(SP_DIR, "nose", "core.py") + " " + " ".join(source.abspath for source in sources) + FLAGS])
+                                               source = ["run " + os.path.join('$SP_DIR', "nose", "core.py") + " " + " ".join(source.abspath for source in sources) + FLAGS])
                     targets += noseenv.Command(".coverage", targets, "gdb python < $SOURCES")
                     return targets
             else:

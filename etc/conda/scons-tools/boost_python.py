@@ -47,7 +47,6 @@ def generate(env):
 
         def BoostPythonExtension(env, target, sources, preserve_egg_dir=False):
             # Code to build "target" from "source"
-            SP_DIR = env['SP_DIR']
             SYSTEM = env['SYSTEM']
             parents = []
             if not preserve_egg_dir:
@@ -61,7 +60,7 @@ def generate(env):
                     target = os.path.basename(target)
                 if not SYSTEM == 'win':
                     target += '.so'
-                    target = env.File(os.path.join(SP_DIR, target))
+                    target = env.File(os.path.join('$SP_DIR', target))
                 else:
                     target += '.pyd'
                     target = env.File(target)
@@ -99,7 +98,7 @@ def generate(env):
                 if preserve_egg_dir:
                     return env.Install(os.path.dirname(target.srcnode().abspath), pyd)
                 else:
-                    return env.Install(os.path.join(SP_DIR, Path(target).parent), pyd)
+                    return env.Install(os.path.join('$SP_DIR', Path(target).parent), pyd)
             elif SYSTEM == 'osx':
                 return env.LoadableModule(target, [], SHLIBPREFIX='',
                                           SHLINKFLAGS='$LINKFLAGS -bundle',
