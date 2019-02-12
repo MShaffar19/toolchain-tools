@@ -42,23 +42,22 @@ def generate(env, **kwargs):
       
       PYTHON_VERSION = sysconfig.get_python_version()
       SYSTEM = env['SYSTEM']
-      PREFIX = env['PREFIX']
       if SYSTEM == 'win':
           env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')],
-                           CPPPATH = [os.path.join(PREFIX, '..', 'include')])
+                           CPPPATH = [os.path.join('$PREFIX', '..', 'include')])
       elif PYTHON_VERSION == '2.7':
-              env.AppendUnique(CPPPATH = [os.path.join(PREFIX, 'include', 'python' + PYTHON_VERSION)],
+              env.AppendUnique(CPPPATH = [os.path.join('$PREFIX', 'include', 'python' + PYTHON_VERSION)],
                                LIBS = ['python' + PYTHON_VERSION])
       elif PYTHON_VERSION in ['3.6', '3.7']:
-              env.AppendUnique(CPPPATH = [os.path.join(PREFIX, 'include', 'python' + PYTHON_VERSION + 'm')],
+              env.AppendUnique(CPPPATH = [os.path.join('$PREFIX', 'include', 'python' + PYTHON_VERSION + 'm')],
                                LIBS = ['python' + PYTHON_VERSION + 'm'])
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
 
       if SYSTEM == 'win':
-        env['SP_DIR'] = os.path.join(PREFIX, '..', 'Lib', 'site-packages')
+        env['SP_DIR'] = os.path.join('$PREFIX', '..', 'Lib', 'site-packages')
       else:
-        env['SP_DIR'] = os.path.join(PREFIX, 'lib', 'python' + PYTHON_VERSION, 'site-packages')
+        env['SP_DIR'] = os.path.join('$PREFIX', 'lib', 'python' + PYTHON_VERSION, 'site-packages')
         
       def PythonPackage(env, **kwargs):
         pattern = kwargs.pop('pattern', None)
@@ -68,7 +67,7 @@ def generate(env, **kwargs):
         for package in packages:
             for source in packages[package]:
                 if not source.ext in ['.lib', '.exp', '.so', '.dll']:
-                    directory = os.path.join(SP_DIR, *package.split('.'))
+                    directory = os.path.join('$SP_DIR', *package.split('.'))
                     directory = os.path.join(directory, source.relpath(env.Dir(kwargs[package]).srcnode().abspath).parent)
                     targets.append(env.Install(directory, source.abspath()))
         return targets
