@@ -48,7 +48,6 @@ env:
   - CONDA_RECIPE=etc/conda/python-scons
   - CONDA_RECIPE=etc/conda/scons-tools
   - CONDA_RECIPE=etc/conda/python-parse
-  - CONDA_RECIPE=etc/conda/llvm-suite
   - CONDA_RECIPE=etc/conda/libtoolchain
   - CONDA_RECIPE=etc/conda/libtoolchain-dev
   - CONDA_RECIPE=etc/conda/python-toolchain
@@ -57,8 +56,6 @@ env:
 
 matrix:
   exclude:
-    - os: linux
-      env: CONDA_RECIPE=etc/conda/llvm-suite
     - os: osx
       env:
         DOCKER_CONTEXT=etc/docker/linux-32
@@ -74,8 +71,6 @@ matrix:
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/etc/conda/clang
     - os: windows
-      env: CONDA_RECIPE=etc/conda/llvm-suite
-    - os: windows
       env:
         DOCKER_CONTEXT=etc/docker/linux-32
         DOCKER_CONTAINER=linux-32
@@ -89,10 +84,6 @@ matrix:
     - os: windows
       env:
         CONDA_RECIPE=etc/conda/pybind11-suite
-  allow_failures:
-    - os: osx
-      env:
-        CONDA_RECIPE=etc/conda/llvm-suite
 
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
