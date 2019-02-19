@@ -74,7 +74,7 @@ else:
             env['AUTOWIG_NO_WRAPPERS'] = GetOption('autowig_no_wrappers')
 
             def pybind11_builder(target, source, env):
-                SITE_AUTOWIG = env['SITE_AUTOWIG']
+                SITE_AUTOWIG = env.subst('$SITE_AUTOWIG')
                 if 'AUTOWIG_ASG' in env:
                     try:
                         env['AUTOWIG_ASG'][env['AUTOWIG_generator_module'].abspath].remove()
