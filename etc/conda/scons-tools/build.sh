@@ -47,6 +47,7 @@ done
 mkdir ${SP_DIR}/scons_tools/site_autowig
 touch ${SP_DIR}/scons_tools/site_autowig/__init__.py
 mkdir -p ${SP_DIR}/scons_tools/site_autowig/ASG
+touch ${SP_DIR}/scons_tools/site_autowig/ASG/__init__.py
 mkdir -p ${SP_DIR}/scons_tools/site_autowig/parser
 touch ${SP_DIR}/scons_tools/site_autowig/parser/__init__.py
 mkdir -p ${SP_DIR}/scons_tools/site_autowig/controller
