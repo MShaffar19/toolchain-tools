@@ -77,14 +77,31 @@ if errorlevel 1 exit 1
 
 echo "b2 done !"
 
-move %PREFIX%\\Library\\lib\boost_*.dll %PREFIX%\\Library\\bin
-
+move %PREFIX%\\Library\\lib\\boost_*.dll %PREFIX%\\Library\\bin
+echo %PREFIX%
+dir %PREFIX%
+echo %PREFIX%\\Library
+dir %PREFIX%\\Library
+echo %PREFIX%\\Library\\include
+dir %PREFIX%\\Library\\include
+echo %PREFIX%\\Library\\lib
+dir  %PREFIX%\\Library\\lib
+echo %PREFIX%\\Library\\bin
+dir %PREFIX%\\Library\\bin
 echo "move done !"
 
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\lib --dst=%SRC_DIR%\\Library\\lib --filtered=filtered.pkl
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\bin --dst=%SRC_DIR%\\Library\\bin --filtered=filtered.pkl
 
+echo %SRC_DIR%
+dir  %SRC_DIR%
+echo %SRC_DIR%\\Library
+dir  %SRC_DIR%\\Library
+echo  %SRC_DIR%\\Library\\include
+dir %SRC_DIR%\\Library\\include
+echo %SRC_DIR%\\Library\\lib
+dir  %SRC_DIR%\\Library\\lib
 echo "move.py done !"
 
 dir %SRC_DIR%
