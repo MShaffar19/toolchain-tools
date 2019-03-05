@@ -18,7 +18,9 @@ def main(src, dst, filtered=set(), include=None, exclude=None):
         root = os.path.abspath(root)
         for file in files:
             oldpath = os.path.join(root, file)
+            print(oldpath)
             MOVE = oldpath not in filtered
+            print('+ ' + str(MOVE))
             if MOVE and include:
                 MOVE = include in oldpath
             if MOVE and exclude:
@@ -32,6 +34,8 @@ def main(src, dst, filtered=set(), include=None, exclude=None):
                     dirpath = os.path.dirname(newpath)
                     if not os.path.exists(dirpath):
                         os.makedirs(dirpath)
+                    print('+ ' + src + ' --> ' + dst)
+                    print('+ ' + oldpath + ' --> ' + newpath)
                     shutil.move(oldpath, newpath)
     changed = True
     if PY2:
