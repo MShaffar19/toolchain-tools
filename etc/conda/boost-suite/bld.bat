@@ -75,11 +75,17 @@ call .\b2 install toolset=msvc-14.0 ^
           --prefix=%LIBRARY_PREFIX%
 if errorlevel 1 exit 1
 
+echo "b2 done !"
+
 move %PREFIX%\\Library\\lib\boost_*.dll %PREFIX%\\Library\\bin
+
+echo "move done !"
 
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\lib --dst=%SRC_DIR%\\Library\\lib --filtered=filtered.pkl
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\bin --dst=%SRC_DIR%\\Library\\bin --filtered=filtered.pkl
+
+echo "move.py done !"
 
 dir %SRC_DIR%
 dir %SRC_DIR%\\Library
