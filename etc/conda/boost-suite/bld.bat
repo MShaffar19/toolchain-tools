@@ -46,6 +46,10 @@
 
 echo ON
 
+dir %PREFIX%\\Library
+dir %PREFIX%\\Library\\include
+dir %PREFIX%\\Library\\lib
+
 python %RECIPE_DIR%/filter.py --src=%PREFIX%\\Library --dst=filtered.pkl
 if errorlevel 1 exit 1
 
@@ -67,6 +71,10 @@ if errorlevel 1 exit 1
 
 move %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
 if errorlevel 1 exit 1
+
+dir %PREFIX%\\Library
+dir %PREFIX%\\Library\\include
+dir %PREFIX%\\Library\\lib
 
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\include --dst=%SRC_DIR%\\Library\\include --filtered=filtered.pkl
 python %RECIPE_DIR%\\move.py --src=%PREFIX%\\Library\\lib --dst=%SRC_DIR%\\Library\\lib --filtered=filtered.pkl
