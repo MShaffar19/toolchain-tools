@@ -6,6 +6,7 @@ platform:
 environment:
   matrix:
     - CONDA_RECIPE: etc/conda/boost-suite
+    - CONDA_RECIPE: etc/conda/libboost_python
     - CONDA_RECIPE: etc/conda/pybind11-suite
    
 install:

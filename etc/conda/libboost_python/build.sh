@@ -51,11 +51,11 @@ fi
 
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
-    --without-libraries=system,python \
+    --with-python="${PYTHON}" \
+    --without-libraries=system \
+    --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
     --with-icu="${PREFIX}" \
     | tee bootstrap.log 2>&1
-
-./b2 headers | tee b2_headers.log 2>&1
 
 ./b2 -q -d${DFLAG} \
     variant=release \
@@ -66,17 +66,13 @@ fi
     runtime-link=shared \
     link=shared \
     toolset=${TOOLSET}-custom \
+    python="${PY_VER}" \
     include="${INCLUDE_PATH}" \
     cxxflags="${CXXFLAGS}" \
     linkflags="${LINKFLAGS}" \
     --without-mpi \
-    --without-python \
     --layout=system \
     -j$CPU_COUNT \
     install | tee b2.log 2>&1
-
-
-ls ${PREFIX}/include
-ls ${PREFIX}/include/boost
 
 set +ve

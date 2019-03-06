@@ -46,6 +46,7 @@
 
 echo ON
 
+
 call .\bootstrap.bat
 if errorlevel 1 exit 1
 
@@ -57,7 +58,6 @@ call .\b2 install toolset=msvc-14.0 ^
           define=BOOST_ALL_NO_LIB ^
           -j%CPU_COUNT% ^
           --without-mpi ^
-          --without-python ^
           --layout=system ^
           --build-dir=buildboost ^
           --prefix=%LIBRARY_PREFIX%

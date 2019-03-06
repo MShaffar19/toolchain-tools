@@ -30,8 +30,9 @@ about:
 
 outputs:
   - name: libboost-dev
-    script: libboost-dev.sh   [unix]
-    script: libboost-dev.bat  [win]
+    files:
+      - {{ PREFIX }}/include/boost            # [unix]
+      - {{ PREFIX }}\\Library\\include\\boost # [win]
     requirements:
       build:                      
       {% for package in resolved_packages('build') %}
@@ -42,8 +43,10 @@ outputs:
         - {{ package }}
       {% endfor %}
   - name: libboost
-    script: libboost.sh     [unix]    
-    script: libboost.bat    [win]    
+    files:
+      - {{ PREFIX }}/lib/libboost_*            # [unix]
+      - {{ PREFIX }}\\Library\\bin\\boost_*    # [win]
+      - {{ PREFIX }}\\Library\\lib\\libboost_* # [win]
     requirements:
       build:                      
       {% for package in resolved_packages('build') %}
@@ -53,20 +56,3 @@ outputs:
       {% for package in resolved_packages('host') %}
         - {{ package }}
       {% endfor %}
-  - name: libboost_python
-    script: libboost_python.sh  [unix]
-    script: libboost_python.bat [win]
-    requirements:
-      build:                      
-      {% for package in resolved_packages('build') %}
-        - {{ package }}
-      {% endfor %}
-      host:
-      {% for package in resolved_packages('host') %}
-        - {{ package }}
-      {% endfor %}
-        - python
-        - {{ pin_subpackage("libboost", exact=True) }}
-      run:
-        - python
-        - {{ pin_subpackage("libboost", exact=True) }}
