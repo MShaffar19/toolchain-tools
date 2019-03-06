@@ -65,4 +65,9 @@ if errorlevel 1 exit 1
 
 move %PREFIX%\\Library\\lib\\boost_*.dll %PREFIX%\\Library\\bin
 
+dir %PREFIX%\\Library
+dir %PREFIX%\\Library\\include
+dir %PREFIX%\\Library\\lib
+dir %PREFIX%\\Library\\bin
+
 echo OFF
