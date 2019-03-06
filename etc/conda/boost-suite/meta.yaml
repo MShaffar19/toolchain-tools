@@ -32,7 +32,7 @@ outputs:
   - name: libboost-dev
     files:
       - {{ PREFIX }}/include/boost            # [unix]
-      - {{ PREFIX }}\\Library\\include\\boost # [win]
+      - {{ PREFIX }}\Library\include\boost    # [win]
     requirements:
       build:                      
       {% for package in resolved_packages('build') %}
@@ -45,8 +45,8 @@ outputs:
   - name: libboost
     files:
       - {{ PREFIX }}/lib/libboost_*            # [unix]
-      - {{ PREFIX }}\\Library\\bin\\boost_*    # [win]
-      - {{ PREFIX }}\\Library\\lib\\libboost_* # [win]
+      - {{ PREFIX }}\Library\bin\boost_*    # [win]
+      - {{ PREFIX }}\Library\lib\libboost_* # [win]
     requirements:
       build:                      
       {% for package in resolved_packages('build') %}
