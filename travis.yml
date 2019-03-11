@@ -52,7 +52,7 @@ env:
   - CONDA_RECIPE=etc/conda/libtoolchain-dev
   - CONDA_RECIPE=etc/conda/python-toolchain
   - CONDA_RECIPE=etc/conda/boost-suite
-  - CONDA_RECIPE=etc/conda/libboost-python
+  - CONDA_RECIPE=etc/conda/libboost_python
   - CONDA_RECIPE=etc/conda/pybind11-suite
 
 matrix:
