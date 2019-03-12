@@ -84,7 +84,7 @@ matrix:
         CONDA_RECIPE=etc/conda/boost-suite
     - os: windows
       env:
-        CONDA_RECIPE=etc/conda/libboost-python
+        CONDA_RECIPE=etc/conda/libboost_python
     - os: windows
       env:
         CONDA_RECIPE=etc/conda/pybind11-suite
